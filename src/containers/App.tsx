@@ -1,22 +1,56 @@
 import * as React from 'react';
-import './App.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import logo from '../assets/logo.svg';
+import { incrementKakezan } from '@actions';
+import { ContainerCard } from '@components';
+import { AppState } from '@reducers';
+import { Dispatch } from '@store';
 
-class App extends React.Component {
-  public render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+interface Props {
+  readonly kakezan: number;
+  readonly warizan: number;
+  readonly mitorizan: number;
+  readonly anzan: number;
+  readonly actions: {
+    incrementKakezan: (value: number) => void;
+  };
 }
 
-export default App;
+class App extends React.PureComponent<Props> {
+  public render() {
+    const { kakezan, warizan, mitorizan, anzan } = this.props;
+    return (
+      <ContainerCard
+        kakezan={kakezan}
+        warizan={warizan}
+        mitorizan={mitorizan}
+        anzan={anzan}
+        onClick={this.onClick}
+      />
+    );
+  }
+
+  private onClick = () => {
+    const { actions, kakezan } = this.props;
+    actions.incrementKakezan(kakezan);
+  };
+}
+
+const mapStateToProps = (state: AppState): Partial<Props> => ({
+  kakezan: state.kakezan,
+  warizan: state.warizan,
+  mitorizan: state.mitorizan,
+  anzan: state.anzan,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch): Partial<Props> => ({
+  actions: {
+    incrementKakezan: bindActionCreators(incrementKakezan, dispatch),
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);

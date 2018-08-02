@@ -16,7 +16,16 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "paths": {
+      "@actions": ["src/actions"],
+      "@assets": ["src/assets"],
+      "@components": ["src/components"],
+      "@containers": ["src/containers"],
+      "@enums": ["src/enums"],
+      "@reducers": ["src/reducers"],
+      "@store": ["src/store"]
+    }
   },
   "exclude": [
     "node_modules",
