@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AppBar, Toolbar, Theme } from '@material-ui/core';
-import { StyleRules, WithStyles } from '@material-ui/core/styles';
+import { StyleRules } from '@material-ui/core/styles';
 
 import { createStyled } from '@utils';
 import { Logo } from '@components';
@@ -11,7 +11,7 @@ interface Props {
 
 const Header = ({ text = '' }: Props) => (
   <Styled>
-    {({ classes }: WithStyles<ClassKey>) => (
+    {({ classes }) => (
       <AppBar className={classes.container} position="static" color="default">
         <Toolbar>
           <Logo text={text} />

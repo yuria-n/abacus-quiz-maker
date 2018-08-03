@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Theme, Typography } from '@material-ui/core';
-import { StyleRules, WithStyles } from '@material-ui/core/styles';
+import { StyleRules } from '@material-ui/core/styles';
 
 import { createStyled } from '@utils';
 import { Abacus } from '@components';
@@ -11,7 +11,7 @@ interface Props {
 
 const Logo = ({ text = '' }: Props) => (
   <Styled>
-    {({ classes }: WithStyles<ClassKey>) => (
+    {({ classes }) => (
       <div className={classes.container}>
         <Abacus className={classes.icon} color="primary" />
         <Typography variant="title" color="inherit">

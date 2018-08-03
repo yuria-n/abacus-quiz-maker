@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Theme } from '@material-ui/core';
 import Button, { ButtonProps } from '@material-ui/core/Button';
-import { StyleRules, WithStyles } from '@material-ui/core/styles';
+import { StyleRules } from '@material-ui/core/styles';
 
 import { createStyled } from '@utils';
 
@@ -18,7 +18,7 @@ const ChapterHeader = ({
   ...props
 }: Props) => (
   <Styled>
-    {({ classes }: WithStyles<ClassKey>) => (
+    {({ classes }) => (
       <Button
         className={classes.container}
         variant="contained"

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IconButton, Paper, Theme, Typography } from '@material-ui/core';
-import { StyleRules, WithStyles } from '@material-ui/core/styles';
+import { StyleRules } from '@material-ui/core/styles';
 
 import { Github } from '@components';
 import { createStyled } from '@utils';
@@ -12,7 +12,7 @@ interface Props {
 
 const Footer = ({ text = '' }: Props) => (
   <Styled>
-    {({ classes }: WithStyles<ClassKey>) => (
+    {({ classes }) => (
       <Paper className={classes.container} elevation={0} square={true}>
         <Typography color="inherit">{text}</Typography>
         <IconButton href={URLS.github} target="_blank" color="inherit">

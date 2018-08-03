@@ -10,10 +10,13 @@ import {
   GradeCard,
   Footer,
   Header,
+  ImageBackground,
   LargeButton,
 } from '@components';
 import { AppState } from '@reducers';
 import { Dispatch } from '@store';
+import { COLORS } from '@constants';
+import { Styles } from '@utils';
 
 interface Props {
   readonly kakezan: number;
@@ -26,12 +29,29 @@ interface Props {
 }
 
 // TODO: move
-const titles = ['かけざん', 'わりざん', 'みとりざん', 'あんざん'];
+const titles = [
+  {
+    title: 'かけざん',
+    key: 'kakezan',
+  },
+  {
+    title: 'わりざん',
+    key: 'warizan',
+  },
+  {
+    title: 'みとりざん',
+    key: 'mitorizan',
+  },
+  {
+    title: 'あんざん',
+    key: 'anzan',
+  },
+];
 
 class App extends React.PureComponent<Props> {
   public render() {
     return (
-      <div>
+      <ImageBackground>
         <Header text="そろばん問題メーカー" />
         <Chapter>
           <ChapterHeader
@@ -39,23 +59,24 @@ class App extends React.PureComponent<Props> {
             desc="かけざん、わりざん、みとりざん、あんざんの問題を作成します。"
           />
           <ContainerCard>
-            {titles.map(title => (
+            {titles.map(({ title, key }) => (
               <GradeCard
                 key={title}
                 title={title}
-                grade={this.props.kakezan}
+                grade={this.props[key]}
                 needed={true}
                 onGradeChange={this.onKakezanGradeChange}
                 onCheckedChange={this.onCheckedChange}
                 checkTrueText="つくる"
                 checkFalseText="つくらない"
+                cardStyle={styles[key]}
               />
             ))}
           </ContainerCard>
           <LargeButton text="PDFをダウンロード" />
         </Chapter>
         <Footer text="© 2018 そろばん問題メーカー" />
-      </div>
+      </ImageBackground>
     );
   }
 
@@ -86,3 +107,19 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(App);
+
+type ClassKey = 'kakezan' | 'warizan' | 'mitorizan' | 'anzan';
+const styles: Styles<ClassKey> = {
+  kakezan: {
+    backgroundColor: COLORS.peach,
+  },
+  warizan: {
+    backgroundColor: COLORS.mint,
+  },
+  mitorizan: {
+    backgroundColor: COLORS.lime,
+  },
+  anzan: {
+    backgroundColor: COLORS.mango,
+  },
+};

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
   Checkbox,
-  FormControlLabel,
   MenuItem,
   TextField,
   Theme,
   Typography,
+  FormGroup,
 } from '@material-ui/core';
-import { StyleRules, WithStyles } from '@material-ui/core/styles';
+import { StyleRules } from '@material-ui/core/styles';
 
 import { ColorCard } from '@components';
 import { createStyled } from '@utils';
@@ -20,6 +20,7 @@ interface Props {
   readonly onCheckedChange: () => void;
   readonly checkTrueText: string;
   readonly checkFalseText: string;
+  readonly cardStyle?: React.CSSProperties;
 }
 
 // TODO: move
@@ -46,25 +47,27 @@ const GradeCard = ({
   onCheckedChange,
   checkTrueText,
   checkFalseText,
+  cardStyle = {},
 }: Props) => (
   <Styled>
-    {({ classes }: WithStyles<ClassKey>) => (
-      <ColorCard>
-        <Typography variant="title" align="center" gutterBottom={true}>
+    {({ classes }) => (
+      <ColorCard style={cardStyle}>
+        <Typography
+          variant="title"
+          align="center"
+          color="inherit"
+          gutterBottom={true}
+        >
           {title}
         </Typography>
         <TextField
-          id="select-currency-native"
+          id="grade"
           select={true}
           className={classes.textField}
           value={grade}
           onChange={onGradeChange}
-          SelectProps={{
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
           margin="normal"
+          fullWidth={true}
         >
           {grades.map(option => (
             <MenuItem key={option.value} value={option.value}>
@@ -72,35 +75,34 @@ const GradeCard = ({
             </MenuItem>
           ))}
         </TextField>
-        <FormControlLabel
-          className={classes.checkbox}
-          control={
-            <Checkbox
-              checked={needed}
-              onChange={onCheckedChange}
-              value="checkedA"
-            />
-          }
-          label={needed ? checkTrueText : checkFalseText}
-        />
+        <FormGroup className={classes.checkbox}>
+          <Checkbox
+            className={classes.checkbox}
+            checked={needed}
+            onChange={onCheckedChange}
+            value="checkedA"
+          />
+          <Typography color="inherit">
+            {needed ? checkTrueText : checkFalseText}
+          </Typography>
+        </FormGroup>
       </ColorCard>
     )}
   </Styled>
 );
 
-type ClassKey = 'checkbox' | 'textField' | 'menu';
+type ClassKey = 'checkbox' | 'textField';
 const Styled = createStyled(
   (theme: Theme): StyleRules<ClassKey> => ({
     checkbox: {
-      marginLeft: -theme.spacing.unit,
+      alignItems: 'center',
+      display: 'flex',
+      flexDirection: 'row',
+      marginLeft: -theme.spacing.unit * 1.5,
     },
     textField: {
       marginLeft: theme.spacing.unit,
       marginRight: theme.spacing.unit,
-      width: '100%',
-    },
-    menu: {
-      width: '100%',
     },
   }),
 );

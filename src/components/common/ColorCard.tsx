@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { Card, CardContent, Grid, Theme } from '@material-ui/core';
-import { StyleRules, WithStyles } from '@material-ui/core/styles';
+import { CardContent, Grid, Theme } from '@material-ui/core';
+import Card, { CardProps } from '@material-ui/core/Card';
+import { StyleRules } from '@material-ui/core/styles';
 
 import { createStyled } from '@utils';
 
-interface Props {
+interface Props extends CardProps {
   readonly children?: React.ReactNode;
 }
 
-const ColorCard = ({ children = null }: Props) => (
+const ColorCard = ({ children = null, style = {} }: Props) => (
   <Styled>
-    {({ classes }: WithStyles<ClassKey>) => (
+    {({ classes }) => (
       <Grid item={true} md={3} sm={6} xs={12}>
-        <Card>
+        <Card style={{ ...style }}>
           <CardContent className={classes.content}>{children}</CardContent>
         </Card>
       </Grid>
@@ -25,6 +26,7 @@ const Styled = createStyled(
   (theme: Theme): StyleRules<ClassKey> => ({
     content: {
       alignItems: 'center',
+      color: theme.palette.common.white,
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',

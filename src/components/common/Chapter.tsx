@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Theme } from '@material-ui/core';
-import { StyleRules, WithStyles } from '@material-ui/core/styles';
+import { StyleRules } from '@material-ui/core/styles';
 
 import { createStyled } from '@utils';
 
@@ -10,9 +10,7 @@ interface Props {
 
 const Chapter = ({ children }: Props) => (
   <Styled>
-    {({ classes }: WithStyles<ClassKey>) => (
-      <div className={classes.container}>{children}</div>
-    )}
+    {({ classes }) => <div className={classes.container}>{children}</div>}
   </Styled>
 );
 
@@ -28,7 +26,6 @@ const Styled = createStyled(
       marginBottom: theme.spacing.unit * 6,
       marginLeft: 'auto',
       maxWidth: theme.breakpoints.values.md,
-      padding: theme.spacing.unit * 3,
     },
   }),
 );
