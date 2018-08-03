@@ -20,6 +20,9 @@ export const theme: Theme = createMuiTheme({
       hint: COLORS.gray,
     },
   },
+  typography: {
+    fontFamily: `"Rounded Mplus 1c", "Roboto", "Helvetica", "Arial", sans-serif"`,
+  },
 });
 
 export const createStyled = <ClassKey extends string>(

@@ -21,7 +21,12 @@ export const ChapterHeader = ({ title = '', desc = '' }: Props) => (
         >
           {title}
         </Typography>
-        <Typography className={classes.desc} align="center" gutterBottom={true}>
+        <Typography
+          className={classes.desc}
+          variant="subheading"
+          align="center"
+          gutterBottom={true}
+        >
           {desc}
         </Typography>
       </div>
@@ -33,13 +38,14 @@ type ClassKey = 'container' | 'desc' | 'title';
 const Styled = createStyled(
   (theme: Theme): StyleRules<ClassKey> => ({
     container: {
-      marginBottom: theme.spacing.unit * 4,
+      marginBottom: theme.spacing.unit * 3,
     },
     desc: {
       color: theme.palette.text.secondary,
     },
     title: {
       color: theme.palette.text.primary,
+      fontWeight: 500,
     },
   }),
 );

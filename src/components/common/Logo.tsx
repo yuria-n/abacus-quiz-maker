@@ -26,11 +26,12 @@ type ClassKey = 'container' | 'icon';
 const Styled = createStyled(
   (theme: Theme): StyleRules<ClassKey> => ({
     container: {
+      alignItems: 'center',
       display: 'flex',
       flexDirection: 'row',
     },
     icon: {
-      marginRight: theme.spacing.unit * 0.5,
+      marginRight: theme.spacing.unit * 0.25,
       width: theme.spacing.unit * 4,
     },
   }),

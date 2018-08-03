@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Theme } from '@material-ui/core';
+import { Theme, Typography } from '@material-ui/core';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 import { StyleRules } from '@material-ui/core/styles';
 
@@ -26,7 +26,9 @@ export const LargeButton = ({
         color="primary"
         {...props}
       >
-        {text}
+        <Typography variant="subheading" color="inherit">
+          {text}
+        </Typography>
       </Button>
     )}
   </Styled>
