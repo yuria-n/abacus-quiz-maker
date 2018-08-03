@@ -20,11 +20,13 @@
     "paths": {
       "@actions": ["src/actions"],
       "@assets": ["src/assets"],
+      "@constants": ["src/constants"],
       "@components": ["src/components"],
       "@containers": ["src/containers"],
       "@enums": ["src/enums"],
       "@reducers": ["src/reducers"],
-      "@store": ["src/store"]
+      "@store": ["src/store"],
+      "@utils": ["src/utils"]
     }
   },
   "exclude": [

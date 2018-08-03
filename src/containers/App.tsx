@@ -1,9 +1,17 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import { incrementKakezan } from '@actions';
-import { ContainerCard } from '@components';
+import { changeKakezanGrade } from '@actions';
+import {
+  Chapter,
+  ChapterHeader,
+  ContainerCard,
+  GradeCard,
+  Footer,
+  Header,
+  LargeButton,
+} from '@components';
 import { AppState } from '@reducers';
 import { Dispatch } from '@store';
 
@@ -13,27 +21,51 @@ interface Props {
   readonly mitorizan: number;
   readonly anzan: number;
   readonly actions: {
-    incrementKakezan: (value: number) => void;
+    readonly changeKakezanGrade: (kakezan: number) => void;
   };
 }
 
+// TODO: move
+const titles = ['かけざん', 'わりざん', 'みとりざん', 'あんざん'];
+
 class App extends React.PureComponent<Props> {
   public render() {
-    const { kakezan, warizan, mitorizan, anzan } = this.props;
     return (
-      <ContainerCard
-        kakezan={kakezan}
-        warizan={warizan}
-        mitorizan={mitorizan}
-        anzan={anzan}
-        onClick={this.onClick}
-      />
+      <div>
+        <Header text="そろばん問題メーカー" />
+        <Chapter>
+          <ChapterHeader
+            title="むずかしさをえらぶ"
+            desc="かけざん、わりざん、みとりざん、あんざんの問題を作成します。"
+          />
+          <ContainerCard>
+            {titles.map(title => (
+              <GradeCard
+                key={title}
+                title={title}
+                grade={this.props.kakezan}
+                needed={true}
+                onGradeChange={this.onKakezanGradeChange}
+                onCheckedChange={this.onCheckedChange}
+                checkTrueText="つくる"
+                checkFalseText="つくらない"
+              />
+            ))}
+          </ContainerCard>
+          <LargeButton text="PDFをダウンロード" />
+        </Chapter>
+        <Footer text="© 2018 そろばん問題メーカー" />
+      </div>
     );
   }
 
-  private onClick = () => {
-    const { actions, kakezan } = this.props;
-    actions.incrementKakezan(kakezan);
+  private onKakezanGradeChange = () => (event: any) => {
+    // TODO: redux action here
+    this.props.actions.changeKakezanGrade(event.target.value);
+  };
+
+  private onCheckedChange = () => {
+    // TODO: redux action here
   };
 }
 
@@ -46,7 +78,7 @@ const mapStateToProps = (state: AppState): Partial<Props> => ({
 
 const mapDispatchToProps = (dispatch: Dispatch): Partial<Props> => ({
   actions: {
-    incrementKakezan: bindActionCreators(incrementKakezan, dispatch),
+    changeKakezanGrade: bindActionCreators(changeKakezanGrade, dispatch),
   },
 });
 

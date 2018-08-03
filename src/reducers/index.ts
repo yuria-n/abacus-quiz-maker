@@ -28,7 +28,7 @@ export default (
   action: AppAction,
 ): AppState => {
   switch (action.type) {
-    case ActionType.Increment:
+    case ActionType.ChangeKakezanGrade:
       return { ...state, ...action.payload };
     default:
       return state;

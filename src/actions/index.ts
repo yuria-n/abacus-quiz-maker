@@ -1,8 +1,8 @@
 import { ActionType } from '@enums';
 
-export const incrementKakezan = (value: number) => {
+export const changeKakezanGrade = (kakezan: number) => {
   return {
-    type: ActionType.Increment,
-    payload: { kakezan: value + 1 },
+    type: ActionType.ChangeKakezanGrade,
+    payload: { kakezan },
   };
 };
