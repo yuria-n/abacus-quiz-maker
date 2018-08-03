@@ -9,7 +9,7 @@ interface Props extends CardProps {
   readonly children?: React.ReactNode;
 }
 
-const ColorCard = ({ children = null, style = {} }: Props) => (
+export const ColorCard = ({ children = null, style = {} }: Props) => (
   <Styled>
     {({ classes }) => (
       <Grid item={true} md={3} sm={6} xs={12}>
@@ -34,5 +34,3 @@ const Styled = createStyled(
     },
   }),
 );
-
-export default ColorCard;

@@ -1,3 +1,1 @@
-import GradeCard from './GradeCard';
-
-export { GradeCard };
+export * from './GradeCard';

@@ -9,7 +9,7 @@ interface Props {
   readonly text?: string;
 }
 
-const Header = ({ text = '' }: Props) => (
+export const Header = ({ text = '' }: Props) => (
   <Styled>
     {({ classes }) => (
       <AppBar className={classes.container} position="static" color="default">
@@ -29,5 +29,3 @@ const Styled = createStyled(
     },
   }),
 );
-
-export default Header;

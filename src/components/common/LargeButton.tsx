@@ -10,7 +10,7 @@ interface Props extends ButtonProps {
   readonly onClick?: () => void;
 }
 
-const ChapterHeader = ({
+export const LargeButton = ({
   text = '',
   variant = 'contained',
   size = 'large',
@@ -44,5 +44,3 @@ const Styled = createStyled(
     },
   }),
 );
-
-export default ChapterHeader;

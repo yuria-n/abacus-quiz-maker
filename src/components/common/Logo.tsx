@@ -9,7 +9,7 @@ interface Props {
   readonly text?: string;
 }
 
-const Logo = ({ text = '' }: Props) => (
+export const Logo = ({ text = '' }: Props) => (
   <Styled>
     {({ classes }) => (
       <div className={classes.container}>
@@ -35,5 +35,3 @@ const Styled = createStyled(
     },
   }),
 );
-
-export default Logo;

@@ -7,7 +7,7 @@ interface Props {
   readonly children?: React.ReactNode;
 }
 
-const Chapter = ({ children }: Props) => (
+export const ImageBackground = ({ children }: Props) => (
   <Styled>
     {({ classes }) => <div className={classes.container}>{children}</div>}
   </Styled>
@@ -18,5 +18,3 @@ const Styled = createStyled({
     backgroundImage: `url(${IMAGES.pattern})`,
   },
 });
-
-export default Chapter;

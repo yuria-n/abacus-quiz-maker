@@ -10,7 +10,7 @@ interface Props {
   readonly text?: string;
 }
 
-const Footer = ({ text = '' }: Props) => (
+export const Footer = ({ text = '' }: Props) => (
   <Styled>
     {({ classes }) => (
       <Paper className={classes.container} elevation={0} square={true}>
@@ -36,5 +36,3 @@ const Styled = createStyled(
     },
   }),
 );
-
-export default Footer;

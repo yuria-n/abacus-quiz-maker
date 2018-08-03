@@ -8,7 +8,7 @@ interface Props {
   readonly children?: React.ReactNode;
 }
 
-const Chapter = ({ children }: Props) => (
+export const Chapter = ({ children }: Props) => (
   <Styled>
     {({ classes }) => <div className={classes.container}>{children}</div>}
   </Styled>
@@ -29,5 +29,3 @@ const Styled = createStyled(
     },
   }),
 );
-
-export default Chapter;

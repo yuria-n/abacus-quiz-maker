@@ -39,7 +39,7 @@ const grades = [
   },
 ];
 
-const GradeCard = ({
+export const GradeCard = ({
   title,
   grade,
   needed,
@@ -106,5 +106,3 @@ const Styled = createStyled(
     },
   }),
 );
-
-export default GradeCard;

@@ -9,7 +9,7 @@ interface Props {
   readonly desc?: string;
 }
 
-const ChapterHeader = ({ title = '', desc = '' }: Props) => (
+export const ChapterHeader = ({ title = '', desc = '' }: Props) => (
   <Styled>
     {({ classes }) => (
       <div className={classes.container}>
@@ -43,5 +43,3 @@ const Styled = createStyled(
     },
   }),
 );
-
-export default ChapterHeader;
