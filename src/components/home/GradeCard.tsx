@@ -53,7 +53,7 @@ export const GradeCard = ({
     {({ classes }) => (
       <ColorCard style={cardStyle}>
         <Typography
-          variant="title"
+          variant="h6"
           align="center"
           color="inherit"
           gutterBottom={true}

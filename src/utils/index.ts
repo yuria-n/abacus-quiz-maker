@@ -21,7 +21,8 @@ export const theme: Theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: `"Rounded Mplus 1c", "Roboto", "Helvetica", "Arial", sans-serif"`,
+    useNextVariants: true,
+    fontFamily: `"M PLUS Rounded 1c", "Roboto", "Helvetica", "Arial", sans-serif"`,
   },
 });
 

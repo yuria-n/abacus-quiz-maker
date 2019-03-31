@@ -26,7 +26,7 @@ export const LargeButton = ({
         color="primary"
         {...props}
       >
-        <Typography variant="subheading" color="inherit">
+        <Typography variant="button" color="inherit">
           {text}
         </Typography>
       </Button>

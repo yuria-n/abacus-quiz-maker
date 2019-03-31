@@ -15,7 +15,7 @@ export const ChapterHeader = ({ title = '', desc = '' }: Props) => (
       <div className={classes.container}>
         <Typography
           className={classes.title}
-          variant="display1"
+          variant="h4"
           align="center"
           gutterBottom={true}
         >
@@ -23,7 +23,7 @@ export const ChapterHeader = ({ title = '', desc = '' }: Props) => (
         </Typography>
         <Typography
           className={classes.desc}
-          variant="subheading"
+          variant="subtitle1"
           align="center"
           gutterBottom={true}
         >

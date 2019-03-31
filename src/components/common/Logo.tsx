@@ -14,7 +14,7 @@ export const Logo = ({ text = '' }: Props) => (
     {({ classes }) => (
       <div className={classes.container}>
         <Abacus className={classes.icon} color="primary" />
-        <Typography variant="title" color="inherit">
+        <Typography variant="h6" color="inherit">
           {text}
         </Typography>
       </div>
