@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { changeKakezanGrade } from '@actions';
@@ -14,7 +14,6 @@ import {
   LargeButton,
 } from '@components';
 import { AppState } from '@reducers';
-import { Dispatch } from '@store';
 import { COLORS } from '@constants';
 import { Styles } from '@utils';
 
@@ -24,7 +23,7 @@ interface Props {
   readonly mitorizan: number;
   readonly anzan: number;
   readonly actions: {
-    readonly changeKakezanGrade: (kakezan: number) => void;
+    readonly changeKakezanGrade: (kakezanGrade: number) => void;
   };
 }
 
@@ -73,7 +72,7 @@ class App extends React.PureComponent<Props> {
               />
             ))}
           </ContainerCard>
-          <LargeButton text="PDFをダウンロード" />
+          <LargeButton text="問題を作成する" />
         </Chapter>
         <Footer text="© 2018 そろばん問題メーカー" />
       </ImageBackground>
@@ -82,6 +81,8 @@ class App extends React.PureComponent<Props> {
 
   private onKakezanGradeChange = () => (event: any) => {
     // TODO: redux action here
+    const { value } = event.target.value;
+    console.log('value', value);
     this.props.actions.changeKakezanGrade(event.target.value);
   };
 
@@ -91,10 +92,10 @@ class App extends React.PureComponent<Props> {
 }
 
 const mapStateToProps = (state: AppState): Partial<Props> => ({
-  kakezan: state.kakezan,
-  warizan: state.warizan,
-  mitorizan: state.mitorizan,
-  anzan: state.anzan,
+  kakezan: state.kakezanGrade,
+  warizan: state.warizanGrade,
+  mitorizan: state.mitorizanGrade,
+  anzan: state.anzanGrade,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): Partial<Props> => ({

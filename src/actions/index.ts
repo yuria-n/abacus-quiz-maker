@@ -1,8 +1,9 @@
 import { ActionType } from '@enums';
 
-export const changeKakezanGrade = (kakezan: number) => {
+export const changeKakezanGrade = (kakezanGrade: number) => {
+  console.log('action: ', kakezanGrade);
   return {
     type: ActionType.ChangeKakezanGrade,
-    payload: { kakezan },
+    payload: { kakezanGrade },
   };
 };

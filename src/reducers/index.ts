@@ -3,10 +3,10 @@ import { Action as ReduxAction } from 'redux';
 import { ActionType } from '@enums';
 
 export interface AppState {
-  readonly kakezan: number;
-  readonly warizan: number;
-  readonly mitorizan: number;
-  readonly anzan: number;
+  readonly kakezanGrade: number;
+  readonly warizanGrade: number;
+  readonly mitorizanGrade: number;
+  readonly anzanGrade: number;
 }
 
 export interface Action<S> extends ReduxAction {
@@ -17,10 +17,10 @@ export interface Action<S> extends ReduxAction {
 export type AppAction = Action<AppState>;
 
 const initialState: AppState = {
-  kakezan: 8,
-  warizan: 8,
-  mitorizan: 8,
-  anzan: 8,
+  kakezanGrade: 8,
+  warizanGrade: 8,
+  mitorizanGrade: 8,
+  anzanGrade: 8,
 };
 
 export default (
@@ -29,6 +29,7 @@ export default (
 ): AppState => {
   switch (action.type) {
     case ActionType.ChangeKakezanGrade:
+      console.log('reducer: ', state);
       return { ...state, ...action.payload };
     default:
       return state;
