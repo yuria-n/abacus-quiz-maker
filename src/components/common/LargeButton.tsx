@@ -3,7 +3,7 @@ import { Theme, Typography } from '@material-ui/core';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 import { StyleRules } from '@material-ui/core/styles';
 
-import { createStyled } from '@utils';
+import { createStyled } from '../../utils';
 
 interface Props extends ButtonProps {
   readonly text?: string;

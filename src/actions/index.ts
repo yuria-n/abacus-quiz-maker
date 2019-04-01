@@ -1,4 +1,4 @@
-import { ActionType } from '@enums';
+import { ActionType } from '../enums';
 
 export const changeKakezanGrade = (kakezanGrade: number) => {
   console.log('action: ', kakezanGrade);

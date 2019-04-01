@@ -6,7 +6,7 @@ import withStyles, {
   WithStylesOptions,
 } from '@material-ui/core/styles/withStyles';
 
-import { COLORS } from '@constants';
+import { COLORS } from '../constants';
 
 export type Styles<S extends string = string> = Record<S, React.CSSProperties>;
 

@@ -1,6 +1,6 @@
 import { Action as ReduxAction } from 'redux';
 
-import { ActionType } from '@enums';
+import { ActionType } from '../enums';
 
 export interface AppState {
   readonly kakezanGrade: number;

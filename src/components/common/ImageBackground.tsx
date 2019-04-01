@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { createStyled } from '@utils';
-import { IMAGES } from '@constants';
+import { createStyled } from '../../utils';
+import { IMAGES } from '../../constants';
 
 interface Props {
   readonly children?: React.ReactNode;

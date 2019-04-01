@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Theme } from '@material-ui/core';
 import { StyleRules } from '@material-ui/core/styles';
 
-import { createStyled } from '@utils';
+import { createStyled } from '../../utils';
 
 interface Props {
   readonly children?: React.ReactNode;

@@ -3,7 +3,7 @@ import { CardContent, Grid, Theme } from '@material-ui/core';
 import Card, { CardProps } from '@material-ui/core/Card';
 import { StyleRules } from '@material-ui/core/styles';
 
-import { createStyled } from '@utils';
+import { createStyled } from '../../utils';
 
 interface Props extends CardProps {
   readonly children?: React.ReactNode;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { changeKakezanGrade } from '@actions';
+import { changeKakezanGrade } from '../actions';
 import {
   Chapter,
   ChapterHeader,
@@ -12,40 +12,58 @@ import {
   Header,
   ImageBackground,
   LargeButton,
-} from '@components';
-import { AppState } from '@reducers';
-import { COLORS } from '@constants';
-import { Styles } from '@utils';
+} from '../components';
+import { AppState } from '../reducers';
+import { COLORS } from '../constants';
+import { Styles } from '../utils';
 
-interface Props {
-  readonly kakezan: number;
-  readonly warizan: number;
-  readonly mitorizan: number;
-  readonly anzan: number;
+enum Category {
+  Kakezan = 'kakezan',
+  Warizan = 'warizan',
+  Mitorizan = 'mitorizan',
+  Anzan = 'anzan',
+}
+
+interface Title {
+  title: string;
+  key: Category;
+}
+
+const titles: Title[] = [
+  {
+    title: 'かけざん',
+    key: Category.Kakezan,
+  },
+  {
+    title: 'わりざん',
+    key: Category.Warizan,
+  },
+  {
+    title: 'みとりざん',
+    key: Category.Mitorizan,
+  },
+  {
+    title: 'あんざん',
+    key: Category.Anzan,
+  },
+];
+
+interface StateProps {
+  readonly [Category.Kakezan]: number;
+  readonly [Category.Warizan]: number;
+  readonly [Category.Mitorizan]: number;
+  readonly [Category.Anzan]: number;
+}
+
+interface DispatchProps {
   readonly actions: {
     readonly changeKakezanGrade: (kakezanGrade: number) => void;
   };
 }
 
-// TODO: move
-const titles = [
-  {
-    title: 'かけざん',
-    key: 'kakezan',
-  },
-  {
-    title: 'わりざん',
-    key: 'warizan',
-  },
-  {
-    title: 'みとりざん',
-    key: 'mitorizan',
-  },
-  {
-    title: 'あんざん',
-    key: 'anzan',
-  },
-];
+interface OwnProps {}
+
+type Props = StateProps & DispatchProps & OwnProps;
 
 class App extends React.PureComponent<Props> {
   public render() {
@@ -91,20 +109,20 @@ class App extends React.PureComponent<Props> {
   };
 }
 
-const mapStateToProps = (state: AppState): Partial<Props> => ({
+const mapStateToProps = (state: AppState) => ({
   kakezan: state.kakezanGrade,
   warizan: state.warizanGrade,
   mitorizan: state.mitorizanGrade,
   anzan: state.anzanGrade,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): Partial<Props> => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
   actions: {
     changeKakezanGrade: bindActionCreators(changeKakezanGrade, dispatch),
   },
 });
 
-export default connect(
+export default connect<StateProps, DispatchProps, OwnProps, AppState>(
   mapStateToProps,
   mapDispatchToProps,
 )(App);

@@ -9,8 +9,8 @@ import {
 } from '@material-ui/core';
 import { StyleRules } from '@material-ui/core/styles';
 
-import { ColorCard } from '@components';
-import { createStyled } from '@utils';
+import { ColorCard } from '../../components';
+import { createStyled } from '../../utils';
 
 interface Props {
   readonly title: string;

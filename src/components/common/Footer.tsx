@@ -2,9 +2,9 @@ import * as React from 'react';
 import { IconButton, Paper, Theme, Typography } from '@material-ui/core';
 import { StyleRules } from '@material-ui/core/styles';
 
-import { Github } from '@components';
-import { createStyled } from '@utils';
-import { URLS } from '@constants';
+import { Github } from '../../components';
+import { createStyled } from '../../utils';
+import { URLS } from '../../constants';
 
 interface Props {
   readonly text?: string;

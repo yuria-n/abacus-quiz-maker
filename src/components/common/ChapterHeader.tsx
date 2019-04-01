@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Theme, Typography } from '@material-ui/core';
 import { StyleRules } from '@material-ui/core/styles';
 
-import { createStyled } from '@utils';
+import { createStyled } from '../../utils';
 
 interface Props {
   readonly title?: string;

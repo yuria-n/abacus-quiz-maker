@@ -2,8 +2,8 @@ import * as React from 'react';
 import { AppBar, Toolbar, Theme } from '@material-ui/core';
 import { StyleRules } from '@material-ui/core/styles';
 
-import { createStyled } from '@utils';
-import { Logo } from '@components';
+import { createStyled } from '../../utils';
+import { Logo } from '../../components';
 
 interface Props {
   readonly text?: string;
