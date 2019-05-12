@@ -29,7 +29,9 @@ export default (
 ): AppState => {
   switch (action.type) {
     case ActionType.ChangeKakezanGrade:
-      console.log('reducer: ', state);
+    case ActionType.ChangeWarizanGrade:
+    case ActionType.ChangeAnzanGrade:
+    case ActionType.ChangeMitorizanGrade:
       return { ...state, ...action.payload };
     default:
       return state;

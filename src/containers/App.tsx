@@ -2,7 +2,7 @@ import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { changeKakezanGrade } from '../actions';
+import { changeGrade, GradeInfo } from '../actions';
 import {
   Chapter,
   ChapterHeader,
@@ -14,15 +14,8 @@ import {
   LargeButton,
 } from '../components';
 import { AppState } from '../reducers';
-import { COLORS } from '../constants';
+import { COLORS, Category } from '../constants';
 import { Styles } from '../utils';
-
-enum Category {
-  Kakezan = 'kakezan',
-  Warizan = 'warizan',
-  Mitorizan = 'mitorizan',
-  Anzan = 'anzan',
-}
 
 interface Title {
   title: string;
@@ -57,7 +50,7 @@ interface StateProps {
 
 interface DispatchProps {
   readonly actions: {
-    readonly changeKakezanGrade: (kakezanGrade: number) => void;
+    readonly changeGrade: (gradeInfo: GradeInfo) => void;
   };
 }
 
@@ -66,6 +59,10 @@ interface OwnProps {}
 type Props = StateProps & DispatchProps & OwnProps;
 
 class App extends React.PureComponent<Props> {
+  state = {
+    checked: false,
+  };
+
   public render() {
     return (
       <ImageBackground>
@@ -82,7 +79,7 @@ class App extends React.PureComponent<Props> {
                 title={title}
                 grade={this.props[key]}
                 needed={true}
-                onGradeChange={this.onKakezanGradeChange}
+                onGradeChange={this.onGradeChange(key)}
                 onCheckedChange={this.onCheckedChange}
                 checkTrueText="つくる"
                 checkFalseText="つくらない"
@@ -97,11 +94,9 @@ class App extends React.PureComponent<Props> {
     );
   }
 
-  private onKakezanGradeChange = () => (event: any) => {
-    // TODO: redux action here
-    const { value } = event.target.value;
-    console.log('value', value);
-    this.props.actions.changeKakezanGrade(event.target.value);
+  private onGradeChange = (category: Category) => (event: any) => {
+    const { value: grade } = event.target;
+    this.props.actions.changeGrade({ category, grade });
   };
 
   private onCheckedChange = () => {
@@ -118,7 +113,7 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   actions: {
-    changeKakezanGrade: bindActionCreators(changeKakezanGrade, dispatch),
+    changeGrade: bindActionCreators(changeGrade, dispatch),
   },
 });
 

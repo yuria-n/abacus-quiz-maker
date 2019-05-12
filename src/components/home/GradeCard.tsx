@@ -16,8 +16,8 @@ interface Props {
   readonly title: string;
   readonly grade: number;
   readonly needed: boolean;
-  readonly onGradeChange: () => void;
-  readonly onCheckedChange: () => void;
+  readonly onGradeChange: (event: any) => void;
+  readonly onCheckedChange: (event: any) => void;
   readonly checkTrueText: string;
   readonly checkFalseText: string;
   readonly cardStyle?: React.CSSProperties;
